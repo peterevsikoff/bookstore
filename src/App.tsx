@@ -5,7 +5,7 @@ import { Books, Header, SearchResult, SelectedBook } from "./components";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/bookstore">
           <Header/>
           <Routes>
             <Route path="/">
