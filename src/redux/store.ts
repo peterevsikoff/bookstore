@@ -1,16 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";
-//import { watcherPosts, watcherUser } from './action-creators';
 import { booksReducer } from './reducers';
+import { watcherBooks } from './action-creators';
 
 const middleWare = createSagaMiddleware();
 
 function* rootSaga() {
-    // yield all([
-    //     watcherPosts(),
-    //     watcherUser()
-    // ]);
+    yield all([
+        watcherBooks(),
+        // watcherUser()
+    ]);
 }
 
 const store = createStore(combineReducers({

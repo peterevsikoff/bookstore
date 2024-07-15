@@ -1,4 +1,5 @@
-import { Cart, Heart, Logo, Search, User } from "../media";
+import { Cart, Heart, Logo, User } from "../media";
+import { Search } from "../Search";
 import "./header.scss";
 
 const Header = () => {
@@ -8,14 +9,21 @@ const Header = () => {
                 <div className="header-wrap">
                     <div className="logo">
                         <Logo/>
-                        <Cart/>
-                        <User/>
-                        <Heart/>
-                        <Search/>
+                    </div>
+                    <Search />
+                    <div className="header-action">
+                        <button>
+                            <Heart/>
+                        </button>
+                        <button>
+                            <Cart/>
+                        </button>
+                       <button>
+                            <User/>
+                       </button>
                     </div>
                 </div>
             </div>
-            Header
         </section>
     )
 }

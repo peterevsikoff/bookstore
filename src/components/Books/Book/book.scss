@@ -1,0 +1,66 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.book-card {
+    width: 352px;
+    margin-bottom: 48px;
+    // margin-right: 15px;
+
+    // &:last-child {
+    //     margin-right: 0;
+    // }
+
+    .book-card__image {
+        width: 100%;
+        //height: 220px;
+        overflow: hidden;
+        margin: 0 auto 30px;
+        background-color: $_tertiary-color-blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            object-fit: cover;
+            object-position: center;
+            width: 226px;
+            height: 264px;
+        }
+    }
+
+    a {
+        color: $_system-color-primary;
+        opacity: .7;
+        transition: .2s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    h3 {
+        @include h3;
+        margin-bottom: 50px;
+        padding: 0 6px;
+    }
+
+    .book-card__subtitle {
+        font-size: 16px;
+        font-family: "Helios";
+        color: $_system-color-secondary;
+        margin-bottom: 40px;
+    }
+
+    .book-card__footer {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Bebas Neue";
+        font-size: 24px;
+
+        .book-card__rating {
+            svg {
+                margin-right: 10px;
+            }
+        }
+    }
+}

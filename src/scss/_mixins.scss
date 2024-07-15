@@ -3,3 +3,19 @@
     font-weight: 900;
     font-size: 56px;
 }
+
+@mixin h3 {
+    font-family: "Bebas Neue";
+    font-weight: 600;
+    font-size: 24px;
+}
+
+@mixin button {
+    cursor: pointer;
+    opacity: .7;
+    transition: .2s;
+    
+    &:hover {
+        opacity: 1;
+    }
+}

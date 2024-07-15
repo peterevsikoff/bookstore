@@ -1,0 +1,40 @@
+@import "../../scss/variables";
+
+.search {
+    min-width: 524px;
+    position: relative;
+
+    input {
+        width: 100%;
+        height: 56px;
+        padding-left: 20px;
+        font-size: 16px;
+        font-family: "Helios";
+        border: 1px solid $_system-color-secondary;
+
+        &:focus {
+            outline: 1px solid $_system-color-primary2;
+            border: none;
+        }
+    }
+
+    button {
+        width: 10%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: inherit;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        opacity: .7;
+        transition: .2s;
+
+        &:hover {
+            opacity: 1;
+            //background-color: $_background-color-light;
+            //border: 1px solid $_system-color-secondary;
+        }
+    }
+}

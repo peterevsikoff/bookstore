@@ -1,7 +1,33 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
 
-
 .header {
-    @include h1;
+  padding: 24px 0 0 0;
+  
+  .header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $_system-color-secondary;
+    padding-bottom: 24px;
+
+    .header-action {
+      min-width: 184px;
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        opacity: .7;
+        transition: .2s;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
+}

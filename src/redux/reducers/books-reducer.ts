@@ -1,8 +1,9 @@
-import { SET_BOOKS } from "../action-types";
+import { IBook, IBookSelectedResponse } from "../../types";
+import { SET_BOOKS, SET_SELECTED_BOOK } from "../action-types";
 
 const initialState = {
-    // posts: [] as IPost[],
-    // selectedPost: {} as IPost,
+    books: [] as IBook[],
+    selectedBook: {} as IBookSelectedResponse,
     // per_page: 15,
     // total: 0,
     // currentPage: 1,
@@ -16,6 +17,13 @@ const booksReducer = (state: any = initialState, action: any) => {
             return ({
                 ...state,
                 books,
+            })
+        }
+        case SET_SELECTED_BOOK: {
+            const { selectedBook } = action;
+            return ({
+                ...state,
+                selectedBook,
             })
         }
         default: {

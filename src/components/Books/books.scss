@@ -1,0 +1,19 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.books {
+    padding: 72px 0;
+    
+    h1 {
+        @include h1;
+        margin-bottom: 48px;
+    }
+
+    .books-wrap {
+        // display: flex;
+        // flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(352px, auto));
+        border-bottom: 1px solid $_system-color-secondary;
+    }
+}
