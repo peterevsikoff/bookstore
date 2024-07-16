@@ -1,17 +1,18 @@
 import { IBook, IBookSelectedResponse, ICart } from "../../types";
-import { ADD_CART, ADD_COUNT_CART, DELETE_CART, SET_BOOKS, SET_SELECTED_BOOK, SUBTRACTION_COUNT_CART } from "../action-types";
+import { ADD_CART, ADD_COUNT_CART, DELETE_CART, SET_BOOKS, SET_SELECTED_BOOK, SUBTRACTION_COUNT_CART, TOGGLE_FAVORITES } from "../action-types";
 
 const cartBooksLocal = localStorage.getItem("cartBooks");
+const favoritesBooksLocal = localStorage.getItem("favoritesBooks");
 
 const initialState = {
     books: [] as IBook[],
     selectedBook: {} as IBookSelectedResponse,
-    //cart: [] as ICart[]
-    cart: (cartBooksLocal && cartBooksLocal !== "undefined") ? JSON.parse(cartBooksLocal ? cartBooksLocal : "") : [] as ICart[]
+    cart: (cartBooksLocal && cartBooksLocal !== "undefined") ? JSON.parse(cartBooksLocal ? cartBooksLocal : "") : [] as ICart[],
+    favorites: (favoritesBooksLocal && favoritesBooksLocal !== "undefined") ? JSON.parse(favoritesBooksLocal ? favoritesBooksLocal : "") : [] as IBook[]
     // per_page: 15,
     // total: 0,
     // currentPage: 1,
-    // favorites: favoritesLocal !== "undefined" ? JSON.parse(favoritesLocal ? favoritesLocal : "") : [] as IPost[]
+    
 }
 
 const booksReducer = (state: any = initialState, action: any) => {
@@ -62,6 +63,14 @@ const booksReducer = (state: any = initialState, action: any) => {
             return ({
                 ...state,
                 cart: state.cart.filter((x: ICart) => x.book.isbn13 !== cart.book.isbn13)
+            })
+        }
+        case TOGGLE_FAVORITES: {
+            const { book } = action;
+            const alredyFavorite = state.favorites.some((x: IBookSelectedResponse) => x.isbn13 === book.isbn13);
+            return ({
+                ...state,
+                favorites: alredyFavorite ? state.favorites.filter((x: IBookSelectedResponse) => x.isbn13 !== book.isbn13) : [...state.favorites, book]
             })
         }
         default: {

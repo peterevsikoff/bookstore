@@ -7,8 +7,7 @@ import { IStoreState } from "../../types";
 
 const Header = () => {
     const cart = useSelector((state: IStoreState) => state.books.cart);
-  
-
+    const favorites = useSelector((state: IStoreState) => state.books.favorites);
 
     return(
         <section className="header">
@@ -19,9 +18,15 @@ const Header = () => {
                     </div>
                     <Search />
                     <div className="header-action">
-                        <button>
-                            <Heart/>
-                        </button>
+                        <div className="header-action-container">
+                            <Link to="/books/favorites">
+                                <Heart/>
+                            </Link>
+                            {
+                                favorites.length > 0 &&
+                                <span className="span-counter"></span>
+                            }
+                        </div>
                         <div className="header-action-container">
                             <Link to="/books/cart">
                                 <Cart/>
@@ -31,7 +36,6 @@ const Header = () => {
                                 <span className="span-counter"></span>
                             }
                         </div>
-                        
                        <button>
                             <User/>
                        </button>

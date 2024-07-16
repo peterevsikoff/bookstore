@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Books, Cart, Header, SearchResult, SelectedBook } from "./components";
+import { Books, Cart, Favorites, Header, SearchResult, SelectedBook } from "./components";
 
 //https://api.itbook.store/
 
@@ -23,6 +23,7 @@ const App = () => {
                   <Route path=":searchValue" element={<SearchResult />}></Route>
                 </Route>
                 <Route path="cart" element={<Cart />}></Route>
+                <Route path="favorites" element={<Favorites />}></Route>
               </Route>
               <Route path="*" element={<div>Wrong Page</div>}></Route>
             </Route>

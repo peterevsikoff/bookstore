@@ -15,11 +15,12 @@ interface ICart {
 interface IBooksState {
     books: IBook[],
     selectedBook: IBookSelectedResponse,
-    cart: ICart[]
+    cart: ICart[],
+    favorites: IBookSelectedResponse[],
     // per_page: number,
     // total: number,
     // currentPage: number,
-    // favorites: IPost[],
+    
 }
 
 interface IStoreState {

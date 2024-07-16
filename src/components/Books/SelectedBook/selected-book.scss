@@ -33,6 +33,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+
+            .btn-favorites {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 56px;
+                width: 56px;
+                background-color: $_system-color-primary;
+                @include button;
+
+                svg {
+                    height: 24px;
+                    width: 24px;
+
+                    path {
+                        stroke: $_background-color-white;
+                    }
+                }
+            }
+
+            .btn-favorites-active svg {
+                fill: $_background-color-white;
+            }
         }
 
         .selected-book__details {

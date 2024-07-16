@@ -1,5 +1,5 @@
 import { IBook, IBookSelectedResponse, IBooksResponse, ICart } from "../../types";
-import { ADD_CART, ADD_COUNT_CART, DELETE_CART, LOAD_BOOKS, LOAD_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_BOOKS, SET_SELECTED_BOOK, SUBTRACTION_COUNT_CART } from "../action-types";
+import { ADD_CART, ADD_COUNT_CART, DELETE_CART, LOAD_BOOKS, LOAD_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_BOOKS, SET_SELECTED_BOOK, SUBTRACTION_COUNT_CART, TOGGLE_FAVORITES } from "../action-types";
 import { takeEvery, put } from "redux-saga/effects";
 
 const setBooks = (books: IBook[]) => ({
@@ -67,6 +67,11 @@ const deleteCart = (cart: ICart) => ({
     cart
 })
 
+const toggleFavorites = (book: IBook) => ({
+    type: TOGGLE_FAVORITES,
+    book
+})
+
 function* watcherBooks(){
     yield takeEvery(LOAD_BOOKS, fetchLoadBooks);
     yield takeEvery(LOAD_SELECTED_BOOK, fetchSelectedBook);
@@ -82,5 +87,6 @@ export {
     addCart,
     addCountCart,
     subCountCart,
-    deleteCart
+    deleteCart,
+    toggleFavorites
 }

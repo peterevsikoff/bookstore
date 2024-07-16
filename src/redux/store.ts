@@ -26,6 +26,9 @@ store.subscribe(() => {
     const cart = store.getState().books.cart;
     if(cart)
         localStorage.setItem("cartBooks", JSON.stringify(cart));
+    const favorites = store.getState().books.favorites;
+    if(favorites)
+        localStorage.setItem("favoritesBooks", JSON.stringify(favorites));
 })
 
 export { store };

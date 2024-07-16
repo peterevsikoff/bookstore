@@ -2,19 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { IStoreState, TAB_SELECTED_BOOK_TYPES } from "../../../types";
 import { useEffect, useState } from "react";
-import { addCart, loadSelectedBook } from "../../../redux/action-creators";
+import { addCart, loadSelectedBook, toggleFavorites } from "../../../redux/action-creators";
 import "./selected-book.scss";
-import { ArrowLeft, Star } from "../../media";
+import { ArrowLeft, Heart, Star } from "../../media";
 
 const SelectedBook = () => {
     const { id = "" } = useParams();
     const dispatch = useDispatch();
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
     const cart = useSelector((state: IStoreState) => state.books.cart);
+    const favorites = useSelector((state: IStoreState) => state.books.favorites);
     const [tab, setTab] = useState(TAB_SELECTED_BOOK_TYPES.DESC);
     
-    //console.log("selectedBook", selectedBook);
-
     useEffect(() => {
         dispatch(loadSelectedBook(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,6 +21,9 @@ const SelectedBook = () => {
 
     const handleAddCart = () => {
         dispatch(addCart(selectedBook));
+    }
+    const handleToggleFavorites = () => {
+        dispatch(toggleFavorites(selectedBook));
     }
 
     return(
@@ -36,6 +38,9 @@ const SelectedBook = () => {
                 <div className="selected-book__main-wrap">
                     <div className="selected-book__image">
                         <img alt="image_book" src={selectedBook.image}/>
+                        <button className={`btn-favorites${favorites.some(x => x.isbn13 === selectedBook.isbn13) ? " btn-favorites-active" : ""}`} onClick={() => handleToggleFavorites()}>
+                            <Heart/>
+                        </button>
                     </div>
                     <div className="selected-book__details">
                         <div className="selected-book__price">
