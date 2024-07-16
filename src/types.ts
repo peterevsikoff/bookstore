@@ -7,9 +7,15 @@ interface IBook {
     url: string
 }
 
+interface ICart {
+    book: IBook,
+    count: number
+}
+
 interface IBooksState {
     books: IBook[],
     selectedBook: IBookSelectedResponse,
+    cart: ICart[]
     // per_page: number,
     // total: number,
     // currentPage: number,
@@ -55,5 +61,6 @@ export type {
     IBook,
     IStoreState,
     IBooksResponse,
-    IBookSelectedResponse
+    IBookSelectedResponse,
+    ICart
 }

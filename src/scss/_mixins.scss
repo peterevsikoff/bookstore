@@ -18,4 +18,9 @@
     &:hover {
         opacity: 1;
     }
+
+    &:disabled {
+        cursor: default;
+        opacity: .7;
+    }
 }

@@ -1,0 +1,75 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.cart {
+    padding: 72px 0;
+
+    .cart__link {
+        margin-bottom: 32px;
+
+        a {
+            opacity: .7;
+            transition: .2s;
+    
+            &:hover {
+                opacity: 1;
+            }
+        }
+    } 
+
+    h1 {
+        @include h1;
+        margin-bottom: 48px;
+    }
+
+    .cart-total {
+        display: flex;
+        justify-content: end;
+        
+        .cart-total-wrap {
+            width: 256px;
+        }
+
+        .cart-total__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-family: "Helios";
+
+            div:first-child {
+                color: $_system-color-secondary;
+            }
+        }
+
+        .main-row {
+            font-family: "Bebas Neue";
+            font-size: 40px;
+            color: $_system-color-primary;
+
+            div:first-child {
+                color: $_system-color-primary;
+            }
+        }
+
+        button {
+            width: 100%;
+            font-size: 24px;
+            font-family: "Bebas Neue";
+            padding: 16px 0;
+            background-color: $_system-color-primary;
+            color: $_background-color-white;
+            margin-bottom: 40px;
+            @include button;
+        }
+    }
+
+    .empty {
+        font-size: 40px;
+        font-family: "Helios";
+        color: $_contextual-color-red;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+}

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { IStoreState, TAB_SELECTED_BOOK_TYPES } from "../../../types";
 import { useEffect, useState } from "react";
-import { loadSelectedBook } from "../../../redux/action-creators";
+import { addCart, loadSelectedBook } from "../../../redux/action-creators";
 import "./selected-book.scss";
 import { ArrowLeft, Star } from "../../media";
 
@@ -10,16 +10,19 @@ const SelectedBook = () => {
     const { id = "" } = useParams();
     const dispatch = useDispatch();
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
+    const cart = useSelector((state: IStoreState) => state.books.cart);
     const [tab, setTab] = useState(TAB_SELECTED_BOOK_TYPES.DESC);
     
-    console.log("selectedBook", selectedBook);
+    //console.log("selectedBook", selectedBook);
 
     useEffect(() => {
         dispatch(loadSelectedBook(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
-    
+    const handleAddCart = () => {
+        dispatch(addCart(selectedBook));
+    }
 
     return(
         <section className="selected-book-section">
@@ -61,7 +64,7 @@ const SelectedBook = () => {
                                 <div>Paper book / eBook (PDF)</div>
                             </div>
                         </div>
-                        <button>Add to cart</button>
+                        <button disabled={cart.some(x => x.book.isbn13 === selectedBook.isbn13)} onClick={() => handleAddCart()}>Add to cart</button>
                         <div className="selected-book__details-preview">
                             <a>Preview book</a>
                         </div>

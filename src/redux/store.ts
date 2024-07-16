@@ -21,11 +21,11 @@ const store = createStore(combineReducers({
 
 middleWare.run(rootSaga);
 
-// store.subscribe(() => {
-//     //console.log("subscribe", store.getState());
-//     const favorites = store.getState().posts.favorites;
-//     if(favorites)
-//         localStorage.setItem("favorites", JSON.stringify(favorites));
-// })
+store.subscribe(() => {
+    //console.log("subscribe", store.getState().books.cart);
+    const cart = store.getState().books.cart;
+    if(cart)
+        localStorage.setItem("cartBooks", JSON.stringify(cart));
+})
 
 export { store };

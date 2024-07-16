@@ -3,6 +3,10 @@
 
 .header {
   padding: 24px 0 0 0;
+  position: sticky;
+  top: 0;
+  background-color: $_background-color-white;
+  z-index: 100;
   
   .header-wrap {
     display: flex;
@@ -16,7 +20,7 @@
       display: flex;
       justify-content: space-evenly;
 
-      button {
+      button, a {
         background-color: inherit;
         border: none;
         outline: none;
@@ -26,6 +30,24 @@
 
         &:hover {
           opacity: 1;
+        }
+      }
+
+      .header-action-container {
+        position: relative;
+
+        .span-counter {
+          background-color: $_contextual-color-red;
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          line-height: 1;
+          font-size: 12px;
+          font-weight: 600;
+          position: absolute;
+          top: 0%;
+          right: 0%;
+          transform: translate(0, -50%);
         }
       }
     }
