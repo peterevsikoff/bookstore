@@ -50,6 +50,10 @@
           transform: translate(40%, -80%);
         }
       }
+
+      .authorized svg path {
+          stroke: green;
+      }
     }
   }
 }

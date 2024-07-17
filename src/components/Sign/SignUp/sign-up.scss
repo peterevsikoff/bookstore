@@ -1,0 +1,17 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.sign-up {
+    padding: 16px 0;
+
+    button {
+        width: 100%;
+        font-size: 24px;
+        font-family: "Bebas Neue";
+        padding: 16px 0;
+        background-color: $_system-color-primary;
+        color: $_background-color-white;
+        margin-top: 20px;
+        @include button;
+    }
+}

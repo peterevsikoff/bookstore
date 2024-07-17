@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./books.scss";
 import { IStoreState } from "../../types";
 import { useEffect } from "react";
-import { loadBooks } from "../../redux/action-creators";
+import { getUser, loadBooks } from "../../redux/action-creators";
 import { Book } from "./Book";
 
 const Books = () => {
@@ -11,6 +11,8 @@ const Books = () => {
     
     useEffect(() => {
         dispatch(loadBooks());
+        if(localStorage.getItem("access"))
+            dispatch(getUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     

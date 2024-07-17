@@ -25,8 +25,7 @@ interface IBooksState {
 
 interface IStoreState {
     books: IBooksState,
-    // ui: IUiState,
-    // user: IUserState
+    user: IUserState
 }
 
 interface IBooksResponse {
@@ -58,10 +57,47 @@ interface IBookSelectedResponse {
     year: string
 }
 
+interface IInput {
+    type: INPUTTYPE,
+    value: string | number,
+    setValue: Function,
+    errorText?: string,
+    title: string,
+    disabled?: boolean,
+    placeholder?: string
+}
+
+interface IUser {
+    id: number,
+    email: string,
+    username: string
+}
+
+interface IUserState {
+    user: IUser
+}
+
+interface ISignUpUser {
+    username: string,
+    password: string,
+    email: string
+}
+
 export type {
     IBook,
     IStoreState,
     IBooksResponse,
     IBookSelectedResponse,
-    ICart
+    ICart,
+    IInput,
+    IUser,
+    IUserState,
+    ISignUpUser
+}
+
+//чтобы экспортировать не как тип, а значение
+export const enum INPUTTYPE {
+    TEXT = "text",
+    EMAIL = "email",
+    PASSWORD = "password",
 }

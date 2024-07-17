@@ -1,0 +1,45 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.input {
+    margin-bottom: 16px;
+    padding: 10px 0;
+  
+    div {
+      font-size: 16px;
+      font-family: "Helios";
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+  
+    input {
+      width: 100%;
+      border: 1px solid $_system-color-secondary;
+      outline: none;
+      padding: 18px;
+      font-size: 16px;
+      font-family: "Helios";
+  
+      &:focus {
+        outline: 2px solid $_system-color-secondary;
+      }
+  
+      &:disabled {
+        background-color: $_system-color-secondary;
+      }
+    }
+  
+    .error {
+      font-size: 16px;
+      color: $_contextual-color-red;
+      position: absolute;
+    }
+  
+    .error-input {
+      border: 2px solid $_contextual-color-red;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
