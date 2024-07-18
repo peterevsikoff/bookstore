@@ -15,6 +15,9 @@ const FavoriteBook = ({book}: {book:IBookSelectedResponse}) => {
         <div className="favorite-book">
             <div className="favorite-book__image">
                 <img alt="image_book" src={book.image}/>
+                <button className="btn-favorites-active" onClick={() => handleToggleFavorites()}>
+                    <Heart/>
+                </button>
             </div>
             <div className="favorite-book__main">
                 <Link to={`/books/${book.isbn13}`}>

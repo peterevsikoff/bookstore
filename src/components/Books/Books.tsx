@@ -7,12 +7,13 @@ import { Book } from "./Book";
 
 const Books = () => {
     const books = useSelector((state: IStoreState) => state.books.books);
+    
     const dispatch = useDispatch();
     
     useEffect(() => {
         dispatch(loadBooks());
-        if(localStorage.getItem("access"))
-            dispatch(getUser());
+        // if(localStorage.getItem("access"))
+        //     dispatch(getUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     

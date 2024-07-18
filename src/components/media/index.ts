@@ -5,3 +5,5 @@ export * from "./User";
 export * from "./SearchIcon";
 export * from "./Star";
 export * from "./ArrowLeft";
+export * from "./Burger";
+export * from "./Close";

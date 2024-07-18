@@ -7,7 +7,9 @@ const Book = ({book}: {book: IBook}) => {
     return(
         <div className="book-card">
             <div className="book-card__image">
-                <img alt="image_book" src={book.image}/>
+                <Link to={`/books/${book.isbn13}`}>
+                    <img alt="image_book" src={book.image}/>
+                </Link>
             </div>
             <Link to={`/books/${book.isbn13}`}>
                 <h3>{book.title}</h3>

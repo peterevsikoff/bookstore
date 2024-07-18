@@ -3,15 +3,17 @@ import { SearchIcon } from "../media";
 import "./search.scss";
 import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Search = ({showDetail}: {showDetail?:Function}) => {
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
 
     const handleSearchClick = () => {
         if(searchValue)
-            navigate(`/books/search/${searchValue}`)
+            navigate(`/books/search/${searchValue}`);
         else
-            navigate(`/books`)
+            navigate(`/books`);
+        if(showDetail)
+            showDetail(false);
     }
     
     return(

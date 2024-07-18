@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { ISignUpUser, IUser } from "../../types";
-import { GET_USER, SET_USER, SET_USER_NAME, SIGN_IN_USER, SIGN_UP_ACTIVATE, SIGN_UP_USER, UPDATE_USER_NAME } from "../action-types";
+import { GET_USER, LOG_OUT, SET_USER, SET_USER_NAME, SIGN_IN_USER, SIGN_UP_ACTIVATE, SIGN_UP_USER, UPDATE_USER_NAME } from "../action-types";
 import { getToken } from "../utils";
 
 const signUpUser = (signUpInfo: ISignUpUser) => ({
@@ -70,10 +70,9 @@ function* fetchSignIn(action: any) {
         const { refresh, access } = yield response.json();
         localStorage.setItem("refresh", refresh);
         localStorage.setItem("access", access);
-        //yield fetchGetUser();
+        yield fetchGetUser();
         window.location.pathname = "/bookstore/books";
     }
-    //console.log(response);
 }
 
 function* fetchGetUser(){
@@ -87,6 +86,7 @@ function* fetchGetUser(){
     });
     if(response.status === 200){
         const user: IUser = yield response.json();
+        //console.log("fetchUser", user);
         yield put(setUser(user));
     }
 }
@@ -119,6 +119,11 @@ function* fetchUpdateUserName(action: any) {
     }
 }
 
+const logOut = () => ({
+    type: LOG_OUT
+    
+});
+
 
 function* watcherUser() {
     yield takeEvery(SIGN_UP_USER, fetchSignUp);
@@ -134,5 +139,6 @@ export {
     signUpActivate,
     signInUser,
     getUser,
-    updateUserName
+    updateUserName,
+    logOut
 }

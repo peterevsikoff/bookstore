@@ -5,13 +5,20 @@
 
     .sign-container {
         width: 544px;
-        //height: 480px;
         position: fixed;
         top: 50%;
         left: 50%;
         border: 1px solid $_system-color-secondary;
         transform: translate(-50%, -50%);
         padding: 0 32px;
+
+        @media (max-width: 600px) {
+            width: 80%;
+        }
+
+        @media (max-width: 400px) {
+            width: 90%;
+        }
         
 
         .sign-tab {

@@ -4,6 +4,10 @@
 .favorites {
     padding: 72px 0;
 
+    @media (max-width: 320px) {
+        padding: 56px 0;
+    }
+
     .favorites__link {
         margin-bottom: 32px;
 
@@ -20,6 +24,11 @@
     h1 {
         @include h1;
         margin-bottom: 48px;
+
+        @media (max-width: 320px) {
+            font-size: 32px;
+            margin-bottom: 36px;
+        }
     }
 
     .empty {

@@ -3,6 +3,9 @@
 
 .books {
     padding: 72px 0;
+    @media (max-width: 353px) {
+        padding: 56px 0;
+    }
     
     h1 {
         @include h1;
@@ -10,10 +13,17 @@
     }
 
     .books-wrap {
-        // display: flex;
-        // flex-wrap: wrap;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(352px, auto));
+        justify-items: center;
+        column-gap: 12px;
         border-bottom: 1px solid $_system-color-secondary;
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(auto-fit, minmax(328px, auto));
+        }
+        @media (max-width: 353px) {
+            grid-template-columns: repeat(auto-fit, minmax(272px, auto));
+        }
     }
 }

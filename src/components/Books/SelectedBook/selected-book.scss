@@ -4,6 +4,10 @@
 .selected-book-section {
     padding: 72px 0;
 
+    @media (max-width: 320px) {
+        padding: 56px 0;
+    }
+
     .selected-book__link {
         margin-bottom: 32px;
 
@@ -20,12 +24,26 @@
     h1 {
         @include h1;
         margin-bottom: 48px;
+
+        @media (max-width: 320px) {
+            font-size: 32px;
+            margin-bottom: 36px;
+        }
     }
 
     .selected-book__main-wrap {
         display: flex;
         justify-content: space-between;
         margin-bottom: 70px;
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+
+        @media (max-width: 320px) {
+            margin-bottom: 16px;
+        }
+    
 
         .selected-book__image {
             width: 45%;
@@ -34,6 +52,11 @@
             justify-content: center;
             align-items: center;
             position: relative;
+
+            @media (max-width: 768px) {
+                width: 100%;
+                margin-bottom: 48px;
+            }
 
             .btn-favorites {
                 position: absolute;
@@ -63,6 +86,14 @@
             width: 45%;
             border-top: 1px solid $_system-color-secondary;
             padding: 41px 0;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+
+            @media (max-width: 320px) {
+                padding: 16px 0;
+            }
 
             button {
                 width: 100%;

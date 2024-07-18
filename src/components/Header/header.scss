@@ -15,10 +15,24 @@
     border-bottom: 1px solid $_system-color-secondary;
     padding-bottom: 24px;
 
+    .search {
+      @media (max-width: 900px) {
+        min-width: 410px;
+      }
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .logo {
+      margin-right: 16px;
+    }
+
     .header-action {
-      min-width: 184px;
+      //min-width: 184px;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: end;
+      
 
       button, a {
         background-color: inherit;
@@ -35,25 +49,123 @@
 
       .header-action-container {
         position: relative;
+        margin-left: 20px;
 
-        .span-counter {
-          background-color: $_contextual-color-red;
-          height: 10px;
-          width: 10px;
-          border-radius: 50%;
-          line-height: 1;
-          font-size: 12px;
-          font-weight: 600;
-          position: absolute;
-          top: 0%;
-          right: 0%;
-          transform: translate(40%, -80%);
+        &:first-child {
+          @media (max-width: 768px) {
+            display: none;
+         }
         }
+        
+        
+      }
+
+      .header-action-cart {
+        @media (max-width: 768px) {
+          display: none;
+       }
       }
 
       .authorized svg path {
           stroke: green;
       }
     }
+
+    .header-action-burger {
+      display: none;
+     
+
+      @media (max-width: 768px) {
+        display: block;
+        margin-left: 20px;
+        opacity: .7;
+        transition: .2s;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+     }
+    }
   }
+
+  .header-detail {
+    width: 368px;
+    height: calc(100vh - 82px);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 56px 40px;
+    background-color: $_background-color-white;
+    display: flex;
+    flex-direction: column;
+
+    
+    @media (max-width: 353px) {
+        width: 100vw;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      background-color: rgba($_system-color-primary2, .5);
+      width: calc(100vw - 368px);
+      height: calc(100vh - 82px);
+    }
+
+    .search {
+      min-width: 80%;
+      margin-bottom: 48px;
+
+      button {
+        right: 10px;
+      }
+    }
+
+    .header-detail-main {
+      flex-grow: 1;
+    }
+
+    .header-action-container {
+      display: block;
+      text-align: center;
+      padding: 20px;
+
+      a {
+        position: relative;
+        text-align: center;
+        font-size: 32px;
+        font-family: "Bebas Neue";
+        color: $_system-color-primary;
+      }
+    }
+
+    .btn-log-out {
+      width: 100%;
+      font-size: 24px;
+      font-family: "Bebas Neue";
+      padding: 16px 0;
+      background-color: $_system-color-primary;
+      color: $_background-color-white;
+      text-align: center;
+      @include button;
+    }
+  }
+}
+
+.span-counter {
+  background-color: $_contextual-color-red;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  line-height: 1;
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  transform: translate(40%, -80%);
 }

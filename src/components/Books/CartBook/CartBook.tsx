@@ -19,6 +19,9 @@ const CartBook = ({cart}: {cart: ICart}) => {
         <div className="cart-book">
             <div className="book-card__image">
                 <img alt="image_book" src={cart.book.image}/>
+                <button className="btn-book__delete" onClick={() => handleClickDelete()}>
+                    x
+                </button>
             </div>
             <div className="cart-book__main">
                 <h3>{cart.book.title}</h3>

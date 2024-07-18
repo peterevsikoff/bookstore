@@ -27,6 +27,10 @@ store.subscribe(() => {
     const favorites = store.getState().books.favorites;
     if(favorites)
         localStorage.setItem("favoritesBooks", JSON.stringify(favorites));
+
+
+    // const user = store.getState().user.user;
+    // console.log(user);
 })
 
 export { store };
