@@ -17,9 +17,8 @@ interface IBooksState {
     selectedBook: IBookSelectedResponse,
     cart: ICart[],
     favorites: IBookSelectedResponse[],
-    // per_page: number,
-    // total: number,
-    // currentPage: number,
+    total: number,
+    currentPage: number,
     
 }
 
@@ -30,6 +29,7 @@ interface IStoreState {
 
 interface IBooksResponse {
     total: number,
+    page: number,
     books: IBook[]
 }
 
@@ -47,7 +47,7 @@ interface IBookSelectedResponse {
     isbn13: string,
     language: string,
     pages: string,
-    pdf: {"Free eBook": string},
+    pdf: any,//{"Free eBook": string},
     price: string,
     publisher: string,
     rating: string,

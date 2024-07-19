@@ -1,0 +1,51 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    border-bottom: 1px solid $_system-color-secondary;
+
+    button {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include button;
+
+        svg {
+            margin: 0 12px;
+            width: 30px;
+        }
+
+        @media (max-width: 320px) {
+            .btn-text {
+                display: none;
+            }
+        }
+    }
+
+    .btn-arrow-next {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    .pages {
+        display: flex;
+
+        button{
+            margin: 0 12px;
+        }
+
+        .active {
+            font-weight: 600;
+            font-size: 110%;
+            transform: scale(1.2);
+        }
+    }
+}

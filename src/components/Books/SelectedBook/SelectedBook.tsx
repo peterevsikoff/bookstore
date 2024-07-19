@@ -1,19 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IStoreState, TAB_SELECTED_BOOK_TYPES } from "../../../types";
 import { useEffect, useState } from "react";
 import { addCart, loadSelectedBook, toggleFavorites } from "../../../redux/action-creators";
 import "./selected-book.scss";
-import { ArrowLeft, Heart, Star } from "../../media";
+import { ArrowLeft, Close, Heart, Star } from "../../media";
 
 const SelectedBook = () => {
     const { id = "" } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
     const cart = useSelector((state: IStoreState) => state.books.cart);
     const favorites = useSelector((state: IStoreState) => state.books.favorites);
     const [tab, setTab] = useState(TAB_SELECTED_BOOK_TYPES.DESC);
-    
+    const [pdfShow, setPdfShow] = useState(false);
+
     useEffect(() => {
         dispatch(loadSelectedBook(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,13 +29,20 @@ const SelectedBook = () => {
         dispatch(toggleFavorites(selectedBook));
     }
 
+    useEffect(() => {
+        if(pdfShow)
+            document.body.classList.add("not-scroll");
+        else
+            document.body.classList.remove("not-scroll");
+    }, [pdfShow]);
+
     return(
         <section className="selected-book-section">
             <div className="container">
                 <div className="selected-book__link">
-                    <Link to="/books">
+                    <button onClick={() => navigate(-1)}>
                         <ArrowLeft/>
-                    </Link>
+                    </button>
                 </div>
                 <h1>{selectedBook.title}</h1>
                 <div className="selected-book__main-wrap">
@@ -70,9 +80,23 @@ const SelectedBook = () => {
                             </div>
                         </div>
                         <button disabled={cart.some(x => x.book.isbn13 === selectedBook.isbn13)} onClick={() => handleAddCart()}>Add to cart</button>
-                        <div className="selected-book__details-preview">
-                            <a>Preview book</a>
-                        </div>
+                        {
+                            selectedBook.pdf &&
+                            <div className="selected-book__details-preview">
+                                <button onClick={() => setPdfShow(!pdfShow)}>Preview book</button>
+                            </div>
+                        }
+                        {
+                            pdfShow &&
+                            <div className="pdf">
+                                <div className="pdf-title">
+                                    <button onClick={() => setPdfShow(false)}>
+                                        <Close/>
+                                    </button>
+                                </div>
+                                <iframe title="pdf" src={Object.values(selectedBook.pdf)[0] as string}></iframe>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="selected-book__tab">

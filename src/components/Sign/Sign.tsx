@@ -8,19 +8,21 @@ const Sign = () => {
     return(
         <section className="sign">
             <div className="container">
-                <div className="sign-container">
-                    <div className="sign-tab">
-                        <button className={activeTab === "sign in" ? "active" : ""} onClick={() => setActiveTab("sign in")}>sign in</button>
-                        <button className={activeTab === "sign up" ? "active" : ""} onClick={() => setActiveTab("sign up")}>sign up</button>
+                <div className="sign-wrap">
+                    <div className="sign-container">
+                        <div className="sign-tab">
+                            <button className={activeTab === "sign in" ? "active" : ""} onClick={() => setActiveTab("sign in")}>sign in</button>
+                            <button className={activeTab === "sign up" ? "active" : ""} onClick={() => setActiveTab("sign up")}>sign up</button>
+                        </div>
+                        {
+                            activeTab === "sign in" &&
+                            <SignIn />
+                        }
+                        {
+                            activeTab === "sign up" &&
+                            <SignUp />
+                        }
                     </div>
-                    {
-                        activeTab === "sign in" &&
-                        <SignIn />
-                    }
-                    {
-                        activeTab === "sign up" &&
-                        <SignUp />
-                    }
                 </div>
             </div>
         </section>

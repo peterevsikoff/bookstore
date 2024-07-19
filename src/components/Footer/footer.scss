@@ -1,0 +1,22 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.footer {
+    padding: 36px 6px;
+
+    .footer-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 16px;
+        font-family: "Helios";
+        color: $_system-color-secondary;
+
+        a {
+            color: $_system-color-secondary;
+            padding: 16px 0;
+            @include button;
+        }
+    }
+}

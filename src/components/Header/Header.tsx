@@ -44,7 +44,9 @@ const Header = () => {
             <div className="container">
                 <div className="header-wrap">
                     <div className="logo">
-                        <Logo/>
+                        <Link to="/books">
+                            <Logo/>
+                        </Link>
                     </div>
                     <Search />
                     <div className="header-action">

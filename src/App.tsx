@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Account, Books, Cart, Favorites, Header, SearchResult, SelectedBook, Sign } from "./components";
+import { Account, Books, Cart, Favorites, Footer, Header, SearchResult, SelectedBook, Sign } from "./components";
 
 //https://api.itbook.store/
 
@@ -30,6 +30,7 @@ const App = () => {
               <Route path="*" element={<div>Wrong Page</div>}></Route>
             </Route>
           </Routes>
+          <Footer/>
       </BrowserRouter>
   );
 }
