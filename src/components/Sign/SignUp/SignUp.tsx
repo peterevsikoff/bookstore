@@ -2,14 +2,21 @@ import { useState } from "react";
 import { INPUTTYPE } from "../../../types";
 import { Input } from "../../Input";
 import "./sign-up.scss";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../../../redux/action-creators";
 
 const SignUp = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const dispatch = useDispatch();
     const handleSignUp = () => {
-
+        dispatch(signUpUser({
+            username: name,
+            email,
+            password
+        }));
     }
     return(
         <div className="sign-up">

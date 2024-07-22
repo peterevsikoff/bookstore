@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Account, Books, Cart, Favorites, Footer, Header, SearchResult, SelectedBook, Sign } from "./components";
+import { Account, Books, Cart, Favorites, Footer, Header, RegistrationSuccess, SearchResult, SelectedBook, Sign, SignUpActivation } from "./components";
 
 //https://api.itbook.store/
 
@@ -10,12 +10,8 @@ const App = () => {
           <Routes>
             <Route path="/">
               <Route index element={<Books/>}></Route>
-              {/* <Route path="private" element={isUserAuthorized ? <div>Private</div> : <Navigate to="/"/>}></Route>
-              <Route path="signUp" element={<SignUp/>}/>
-              <Route path="registrationConfirmation" element={<RegistrationConfirmation/>}/>
               <Route path="registrationSuccess" element={<RegistrationSuccess/>}/>
               <Route path="activate/:uid/:token" element={<SignUpActivation/>}/>
-               */}
               <Route path="sign" element={<Sign />}/>
               <Route path="account" element={<Account />}/>
               <Route path="books">

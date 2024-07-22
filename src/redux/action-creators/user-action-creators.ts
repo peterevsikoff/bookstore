@@ -29,6 +29,7 @@ const setUser = (user: IUser) => ({
 
 function* fetchSignUp(action: any) {
     const { signUpInfo } = action;
+    console.log(signUpInfo);
     const response: Response = yield fetch(`https://studapi.teachmeskills.by/auth/users/`, {
         method: "POST",
         headers: {
@@ -37,9 +38,10 @@ function* fetchSignUp(action: any) {
         body: JSON.stringify(signUpInfo)
     });
     if (response.status === 201) {
-        window.location.pathname = "/registrationConfirmation";
+        window.location.pathname = "/bookstore/registrationSuccess";
     }
-    //console.log(response);
+    console.log(response);//KJ3h1EZyUghaR32BUDn2
+    //http://studapi.teachmeskills.by//activate/ODU2MQ/caf0vu-1329c088d744c0441bef311506281108
 }
 
 function* fetchSignActivate(action: any) {
@@ -52,7 +54,7 @@ function* fetchSignActivate(action: any) {
         body: JSON.stringify(activationInfo)
     });
     if (response.status === 204) {
-        window.location.pathname = "/registrationSuccess";
+        window.location.pathname = "/bookstore/registrationSuccess";
     }
     //console.log(response);
 }

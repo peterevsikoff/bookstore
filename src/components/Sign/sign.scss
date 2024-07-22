@@ -5,6 +5,10 @@
     display: flex;
     height: calc(100vh - 105px - 122px);
 
+    @media (max-width: 400px) {
+        height: calc(100vh - 82px - 68px);
+    }
+
     .container {
         display: flex;
         flex-grow: 1;
