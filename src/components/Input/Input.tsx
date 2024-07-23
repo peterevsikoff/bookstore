@@ -8,7 +8,7 @@ const Input = ({type, value, setValue, errorText="", title, disabled=false, plac
             <input className={errorText ? "error-input" : ""} type={type} value={value} disabled={disabled} onChange={(e) => setValue(e.target.value)} placeholder={placeholder}/>
             {
                 errorText && 
-                <div className="error">{errorText}</div>
+                <div className="error" data-testid={`error-${placeholder}`}>{errorText}</div>
             }
         </div>
     )

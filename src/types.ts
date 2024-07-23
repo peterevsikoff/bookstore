@@ -74,13 +74,20 @@ interface IUser {
 }
 
 interface IUserState {
-    user: IUser
+    user: IUser,
+    error: IUserError
 }
 
 interface ISignUpUser {
     username: string,
     password: string,
     email: string
+}
+
+interface IUserError {
+    email?: string[],
+    password?: string[],
+    username?: string[]
 }
 
 export type {
@@ -92,7 +99,8 @@ export type {
     IInput,
     IUser,
     IUserState,
-    ISignUpUser
+    ISignUpUser,
+    IUserError
 }
 
 //чтобы экспортировать не как тип, а значение

@@ -6,6 +6,7 @@ const SET_USER = "SET_USER";
 const UPDATE_USER_NAME = "UPDATE_USER_NAME";
 const SET_USER_NAME = "SET_USER_NAME";
 const LOG_OUT = "LOG_OUT";
+const SET_USER_ERROR = "SET_USER_ERROR";
 
 export { 
     SIGN_UP_USER,
@@ -15,5 +16,6 @@ export {
     SET_USER,
     UPDATE_USER_NAME,
     SET_USER_NAME,
-    LOG_OUT
+    LOG_OUT,
+    SET_USER_ERROR
  };

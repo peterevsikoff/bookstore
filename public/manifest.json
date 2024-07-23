@@ -1,6 +1,6 @@
 {
-  "short_name": "BookStore",
-  "name": "BookStore App",
+  "short_name": "Book Store",
+  "name": "Book Store App",
   "icons": [
     {
       "src": "favicon.ico",

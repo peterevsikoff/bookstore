@@ -4,6 +4,7 @@
 .input {
     margin-bottom: 16px;
     padding: 10px 0;
+    position: relative;
   
     div {
       font-size: 16px;
@@ -19,6 +20,7 @@
       padding: 18px;
       font-size: 16px;
       font-family: "Helios";
+     
   
       &:focus {
         outline: 2px solid $_system-color-secondary;
@@ -33,6 +35,21 @@
       font-size: 16px;
       color: $_contextual-color-red;
       position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      background-color: $_background-color-white;
+      z-index: 100;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: help;
+      padding: 0 2px 4px;
+
+      &:hover {
+        white-space: normal;
+        border: 1px solid $_contextual-color-red;
+      }
     }
   
     .error-input {

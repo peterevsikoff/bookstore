@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
-import { ISignUpUser, IUser } from "../../types";
-import { GET_USER, LOG_OUT, SET_USER, SET_USER_NAME, SIGN_IN_USER, SIGN_UP_ACTIVATE, SIGN_UP_USER, UPDATE_USER_NAME } from "../action-types";
+import { ISignUpUser, IUser, IUserError } from "../../types";
+import { GET_USER, LOG_OUT, SET_USER, SET_USER_ERROR, SET_USER_NAME, SIGN_IN_USER, SIGN_UP_ACTIVATE, SIGN_UP_USER, UPDATE_USER_NAME } from "../action-types";
 import { getToken } from "../utils";
 
 const signUpUser = (signUpInfo: ISignUpUser) => ({
@@ -27,9 +27,13 @@ const setUser = (user: IUser) => ({
     user
 });
 
+const setUserError = (error: IUserError) => ({
+    type: SET_USER_ERROR,
+    error
+})
+
 function* fetchSignUp(action: any) {
     const { signUpInfo } = action;
-    console.log(signUpInfo);
     const response: Response = yield fetch(`https://studapi.teachmeskills.by/auth/users/`, {
         method: "POST",
         headers: {
@@ -40,7 +44,12 @@ function* fetchSignUp(action: any) {
     if (response.status === 201) {
         window.location.pathname = "/bookstore/registrationSuccess";
     }
-    console.log(response);//KJ3h1EZyUghaR32BUDn2
+    if(response.status >= 400){
+        const error:IUserError = yield response.json();
+        console.log(error);
+        yield put(setUserError(error));
+    }
+    //KJ3h1EZyUghaR32BUDn2
     //http://studapi.teachmeskills.by//activate/ODU2MQ/caf0vu-1329c088d744c0441bef311506281108
 }
 
@@ -56,7 +65,6 @@ function* fetchSignActivate(action: any) {
     if (response.status === 204) {
         window.location.pathname = "/bookstore/registrationSuccess";
     }
-    //console.log(response);
 }
 
 function* fetchSignIn(action: any) {

@@ -1,8 +1,9 @@
-import { IUser, IUserState } from "../../types";
-import { LOG_OUT, SET_USER, SET_USER_NAME } from "../action-types";
+import { IUser, IUserError, IUserState } from "../../types";
+import { LOG_OUT, SET_USER, SET_USER_ERROR, SET_USER_NAME } from "../action-types";
 
 const initialState = {
-    user: {} as IUser
+    user: {} as IUser,
+    error: {} as IUserError
 }
 
 const userReducer = (state: IUserState = initialState, action: any) => {
@@ -24,6 +25,12 @@ const userReducer = (state: IUserState = initialState, action: any) => {
             return({
                 ...state,
                 user: {}
+            })
+        }
+        case SET_USER_ERROR: {
+            return({
+                ...state,
+                error: action.error
             })
         }
         default: {
